@@ -16,4 +16,4 @@ function sumEvens(arr, result) {
    return sumEvens(arr.slice(1), result);
 }
 
-console.log(sumEvens(fibonacci(4000000, [1, 2], 1, 2)));
+console.log(sumEvens(fibonacci(100, [1, 2], 1, 2)));
