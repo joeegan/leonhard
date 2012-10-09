@@ -1,20 +1,18 @@
 import sieve_of_atkin
 
-global result
 result = []
+primes = sieve_of_atkin.atkins13(2000000)
 
 def prime_factors(N):
-	primes = sieve_of_atkin.atkins13(2000000)
 	i = 0
-	while i < len(primes)-1 and i < N:
-		factorial_candidate = primes[i]
-		divided = N/factorial_candidate
+	while i < len(primes)-1:
+		f = primes[i] # 'f' for 'factorial candidate'
+		divided = N/f
 		i += 1
-		if (N % factorial_candidate == 0):
-			result.append(factorial_candidate)
-			prime_factors(divided)
+		if (N % f == 0):
+			result.append(f)
+			prime_factors(f)
 			break
 	return result
 
 print(prime_factors(600851475143))
-

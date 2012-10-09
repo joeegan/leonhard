@@ -29,4 +29,4 @@ def calculate_nth_prime(n):
 	return primes[n-1]
 
 
-print "The 10001st prime is "+ str(calculate_nth_prime(10))
+print "The 10001st prime is "+ str(calculate_nth_prime(10001))
