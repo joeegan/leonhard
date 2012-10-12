@@ -1,36 +1,43 @@
-function incrementalArrFromProductRange(rangeBottom, rangeTop) {
+function sumOfRange(rangeBottom, rangeTop) {
 
-   var result = [],
-       sumOfProducts = 1;
-       i = rangeBottom - 1;
-       rangeTop = rangeTop-1;
+   var sumOfProducts = 1,
+       i = rangeBottom;
 
    while (i < rangeTop) {
-      i++;
       sumOfProducts += (sumOfProducts * i);
+      i++;
    }
 
-   for (var i = sumOfProducts; i > 0; i--) {
-      result.push(i);
-   }
-
-   return result;
+   return sumOfProducts;
 
 }
 
-var answer = incrementalArrFromProductRange(1, 10).filter(function (element) {
+function lowestProductEvenlyDivisibleByRange(rangeBottom, rangeTop) {
 
-   var isGood = true;
+   var max = sumOfRange(rangeBottom, rangeTop),
+       i = 0,
+       answer, isGood, j;
 
-   for (var j = 10; j > 1; j--) {
-      if (element % j !== 0) {
-         isGood = false;
+   while (i < max) {
+      isGood = true;
+      i = i + rangeTop;
+
+      for (j = rangeTop; j > 1; j--) {
+         if (i % j !== 0) {
+            isGood = false;
+            break;
+         }
+      }
+      if (isGood) {
+         answer = i;
          break;
       }
    }
 
-   return isGood;
+   return answer;
 
-});
+};
 
-console.log(answer[answer.length-1]);
+console.time('timer');
+console.log(lowestProductEvenlyDivisibleByRange(1, 20));
+console.timeEnd('timer');
